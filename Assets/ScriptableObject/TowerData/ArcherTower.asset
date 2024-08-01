@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c61c5f0da88c8409217c00a9102c94, type: 3}
+  m_Name: ArcherTower
+  m_EditorClassIdentifier: 
+  towerName: 'Archer '
+  icons: {fileID: 21300000, guid: e2b89c13e01b45a4aa7e7f0582dd55d5, type: 3}
+  countLevel: 3
+  towerLevelDatas:
+  - sprite: {fileID: 21300000, guid: e2b89c13e01b45a4aa7e7f0582dd55d5, type: 3}
+    cost: 500
+    damage: 100
+    range: 1
+    attackCooldown: 1
+  - sprite: {fileID: 21300000, guid: cb552d78db7b47b409f39725ee5db8d7, type: 3}
+    cost: 1000
+    damage: 50
+    range: 2
+    attackCooldown: 2
+  - sprite: {fileID: 21300000, guid: 3209347ce3d9fbc41a5c16880ca20e53, type: 3}
+    cost: 2000
+    damage: 100
+    range: 3
+    attackCooldown: 2
+  towerPrefab: {fileID: 235558110204669246, guid: 8965c4e10a20fbd4e8ec4bc78fe7ff8b, type: 3}
+  previewTowerPrefab: {fileID: 3085413878060724537, guid: 09385e282d009a84195becccbf946e72, type: 3}
+  cout: 0
+  rarity: 1

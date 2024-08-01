@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c61c5f0da88c8409217c00a9102c94, type: 3}
+  m_Name: BarrackTower
+  m_EditorClassIdentifier: 
+  towerName: Barrack Tower
+  icons: {fileID: 21300000, guid: e99cabbd2f34f1e4f892a09c4ce4dd23, type: 3}
+  countLevel: 3
+  towerLevelDatas:
+  - sprite: {fileID: 21300000, guid: e99cabbd2f34f1e4f892a09c4ce4dd23, type: 3}
+    cost: 500
+    damage: 20
+    range: 1
+    attackCooldown: 0
+  - sprite: {fileID: 21300000, guid: d5ceaeb4b479425479d43222744d7a93, type: 3}
+    cost: 1000
+    damage: 0
+    range: 2
+    attackCooldown: 0
+  - sprite: {fileID: 21300000, guid: 45552b036d3471847af06f403a5d21f4, type: 3}
+    cost: 1500
+    damage: 0
+    range: 3
+    attackCooldown: 0
+  towerPrefab: {fileID: 442270786941949179, guid: 0aaee679332d3bd47ad0c0da9c15349e, type: 3}
+  previewTowerPrefab: {fileID: 3085413878060724537, guid: af470002b21a82c4fa805736f54e17be, type: 3}
+  cout: 0
+  rarity: 99
