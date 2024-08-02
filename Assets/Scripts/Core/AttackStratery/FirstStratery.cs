@@ -7,6 +7,7 @@ public class FirstStratery : IAttackStratery
 {
     public EnemyHealth FindTargetEnemy(Vector3 myPosition, float range, PathFinding path)
     {
+        if (path == null) return null;
         int minPosEnemy = 0;
         float minDistance = Mathf.Infinity;
         EnemyHealth targetEnemy = null;
@@ -17,18 +18,18 @@ public class FirstStratery : IAttackStratery
             {
                 Vector3Int enemyCellPos = path.roadTile.WorldToCell(enemy.transform.position);
    
-                int enemyIndex = path.FindPath(path.startNode).FindIndex(p => p == enemyCellPos);
+                int enemyIndex = path.FindPath(path.startNode, path.endNode).FindIndex(p => p == enemyCellPos);
                 
                 if (enemyIndex >= minPosEnemy)
                 {
                     Vector3Int tmpVector3Int;
-                    if (enemyIndex == path.FindPath(path.startNode).Count - 1)
+                    if (enemyIndex == path.FindPath(path.startNode, path.endNode).Count - 1)
                     {
-                        tmpVector3Int = path.FindPath(path.startNode)[enemyIndex];
+                        tmpVector3Int = path.FindPath(path.startNode, path.endNode)[enemyIndex];
                     }
                     else
                     {
-                        tmpVector3Int = path.FindPath(path.startNode)[enemyIndex + 1];
+                        tmpVector3Int = path.FindPath(path.startNode, path.endNode)[enemyIndex + 1];
                     }
 
                     float currentEnemeyDistance = Vector2.Distance(enemy.transform.position,

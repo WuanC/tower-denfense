@@ -16,9 +16,8 @@ public class PathFinding : MonoBehaviour
     [SerializeField] private List<Vector3Int> path;
 
     protected HashSet<Vector3Int> obstacles = new();
-    public virtual List<Vector3Int> FindPath(Vector3Int startNode)
+    public virtual List<Vector3Int> FindPath(Vector3Int startNode, Vector3Int endNode)
     {
-        Debug.Log("n");
         switch (modeType)
         {
 

@@ -6,6 +6,7 @@ public class LastStrategy : IAttackStratery
 {
     public EnemyHealth FindTargetEnemy(Vector3 myPosittion, float range, PathFinding path)
     {
+        if(path == null) return null;
         int minPosEnemy = int.MaxValue;
         float maxDistance = float.MaxValue;
         EnemyHealth targetEnemy = null;
@@ -15,10 +16,10 @@ public class LastStrategy : IAttackStratery
             if (collider2d.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
             {
                 Vector3Int enemyPos = path.roadTile.WorldToCell(enemy.transform.position);
-                int enemyIndex = path.FindPath(path.startNode).FindIndex(p => p == enemyPos);
+                int enemyIndex = path.FindPath(path.startNode, path.endNode).FindIndex(p => p == enemyPos);
                 if (enemyIndex <= minPosEnemy)
                 {
-                    Vector3Int tmpVector3Int = path.FindPath(path.startNode)[enemyIndex + 1];
+                    Vector3Int tmpVector3Int = path.FindPath(path.startNode, path.endNode)[enemyIndex + 1];
                     float currentEnemeyDistance = Vector2.Distance(enemy.transform.position,
                         path.roadTile.GetCellCenterWorld(tmpVector3Int));
                     if (enemyIndex == minPosEnemy)

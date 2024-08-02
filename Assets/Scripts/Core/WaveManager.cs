@@ -39,6 +39,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float timeBetweenWave = 15;
 
     private bool skipWave;
+    private Coroutine waveCoroutine;
 
     private void Start()
     {
@@ -107,7 +108,15 @@ public class WaveManager : MonoBehaviour
                     EventManager.Instance.Broadcast(EventID.OnWaveStart, new WaveInfo(0, 0, waves.Length));
                     break;
                 case GameState.Playing:
-                    StartCoroutine(StartWave());
+                    waveCoroutine = StartCoroutine(StartWave());
+                    break;
+                case GameState.Victory:
+                case GameState.Defeat:
+                    if (waveCoroutine != null)
+                    {
+                        StopCoroutine(waveCoroutine);
+                        waveCoroutine = null;
+                    }
                     break;
             }
         }

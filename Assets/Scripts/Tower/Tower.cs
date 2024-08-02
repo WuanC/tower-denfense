@@ -4,34 +4,29 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public  class Tower : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    [SerializeField] private TowerSO towerData;
-    [SerializeField] private EnemyHealth target;
-    private bool canAttack;
-    [SerializeField] private Transform spawnBow;
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private GameObject skillRangeIndicator;
-    [SerializeField] private GameObject targetIndicator;
-    [SerializeField] private GameObject statusUI;
-    private int currentLevel;
+    [SerializeField] protected TowerSO towerData;
+    [SerializeField] protected GameObject skillRangeIndicator;
+    [SerializeField] protected GameObject informationUI;
 
-    private IAttackStratery attackStrategy;
-    private List<StrategyType> listStrategyType;
-    private StrategyType currentStrategyType;
+    protected int currentLevel;
+    protected bool canAttack;
+
+    protected IAttackStratery attackStrategy;
+    protected List<StrategyType> listStrategyType;
+    protected StrategyType currentStrategyType;
 
 
     public event Action OnUpgrapeTower;
-    public event Action OnSaleTower;
-    public event Action OnTowerAttack;
     public event Action<StrategyType> OnChangeStrategy;
 
     private void OnEnable()
     {
         currentLevel = 1;
     }
-    private void Start()
+    protected virtual void Start()
     {
         canAttack = true;
         float scale = towerData.towerLevelDatas[currentLevel - 1].range * 2;
@@ -53,7 +48,7 @@ public class Tower : MonoBehaviour
         FindEnemy();
         if (canAttack)
         {
-            StartCoroutine(Fire());
+            
         }
     }
     public void ChangeStrategy()
@@ -68,7 +63,7 @@ public class Tower : MonoBehaviour
 
         OnChangeStrategy?.Invoke(listStrategyType[index]);
     }
-    private void SetStrategy(StrategyType strategyType)
+    protected void SetStrategy(StrategyType strategyType)
     {
         currentStrategyType = strategyType;
         switch(strategyType)
@@ -87,32 +82,18 @@ public class Tower : MonoBehaviour
                 break;
         }
     }
-    void FindEnemy()
+    protected virtual void FindEnemy()
     {
-        target = attackStrategy.FindTargetEnemy(transform.position, towerData.towerLevelDatas[currentLevel - 1].range, GameController.Instance.GetPathFinding());
-        if(target != null)
-        {
-            targetIndicator.transform.position = Vector2.MoveTowards(targetIndicator.transform.position, target.transform.position, 10 * Time.deltaTime);
-        }     
+   
     }
-
-    public IEnumerator Fire()
+    public virtual void PerformAction()
     {
-        if (target == null) yield break;
 
-            canAttack = false;
-            
-           // GameObject tmp = Instantiate(projectile, spawnBow);
-            //tmp.GetComponent<Projectile>().SetTarget(target.transform);
-            target.TakeDamage(towerData.towerLevelDatas[currentLevel - 1].damage);
-            yield return new WaitForSeconds(towerData.towerLevelDatas[currentLevel - 1].attackCooldown);
-            canAttack = true;
     }
-    public void SetActiveStatus(bool value)
+    public virtual void SetActiveStatus(bool value)
     {
         skillRangeIndicator.SetActive(value);
-        statusUI.SetActive(value);
-        targetIndicator.SetActive(value);
+        informationUI.SetActive(value);
     }
     public void UpdateTower()
     {

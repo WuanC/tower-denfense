@@ -13,7 +13,7 @@ public class TowerSO : ScriptableObject
     public Tower towerPrefab;
     public PreviewTower previewTowerPrefab;
 
-    public int cout;
+    public int count;
     public int rarity;
 }
 
