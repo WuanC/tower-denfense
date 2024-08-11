@@ -1,39 +1,70 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] float speed;
-    private void Update()
+    protected int damage;
+    protected float speed;
+    protected ObjectPool<Projectile> projectilePool;
+    protected Transform startTransform;
+    protected EnemyHealth target;
+
+
+
+    protected float timeElapsed;
+    protected Vector3 lastPosTarget;
+
+    protected virtual void OnEnable()
     {
-        if (target == null || !target.gameObject.activeSelf)
+        if(startTransform != null)
         {
-            Destroy(gameObject);
-            return;
+            transform.position = startTransform.position;
         }
-        transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
+        timeElapsed = 0;
+
 
     }
-    private void LateUpdate()
+    protected virtual void Update()
     {
-        Vector2 direction = target.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-    }
+        timeElapsed += Time.deltaTime;
+        if (target != null)
+        {
+            FindEnemy(target.transform.position);
+            lastPosTarget = target.transform.position;
+        }
+        else
+        {
+            FindEnemy(lastPosTarget);
+        }
+            
 
-    public void SetTarget(Transform target)
+        if(timeElapsed >= 1) {
+            projectilePool.ReturnObject(this);
+        }
+    }
+    protected virtual void FindEnemy(Vector3 target)
     {
+
+    }
+    public virtual void Initial(Transform posSpawn ,ObjectPool<Projectile> projectilePool, EnemyHealth target, int damage, float speed)
+    {
+        this.startTransform = posSpawn;
+        this.projectilePool = projectilePool;
         this.target = target;
+        this.damage = damage;
+        this.speed = speed;
+        lastPosTarget = target.transform.position;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
          if (collision.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
          {
-            Destroy(gameObject);
-            collision.gameObject.SetActive(false);
-         }
+            enemyHealth.TakeDamage(damage);
+            projectilePool.ReturnObject(this);
+        }
     }
 }

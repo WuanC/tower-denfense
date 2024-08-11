@@ -47,15 +47,15 @@ MonoBehaviour:
   waves:
   - enemyPrefabs: {fileID: 6781645921904233226, guid: c39fd50ee6ad5c849ac39c62826bea27, type: 3}
     enemySpeed: 0.3
-    enemyHealth: 1000
-    poolSize: 10
-    enemyInWave: 3
+    enemyHealth: 10
+    poolSize: 1
+    enemyInWave: 1
     coinsReceive: 0
   - enemyPrefabs: {fileID: 7137032471510267263, guid: 956c23e4f9459f747a5152c95fcbccd5, type: 3}
-    enemySpeed: 0.3
+    enemySpeed: 5
     enemyHealth: 200
-    poolSize: 10
-    enemyInWave: 3
+    poolSize: 0
+    enemyInWave: 0
     coinsReceive: 200
   enemyParent: {fileID: 0}
   timeBetweenEnemies: 1

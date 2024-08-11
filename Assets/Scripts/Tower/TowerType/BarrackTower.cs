@@ -5,8 +5,10 @@ using static UnityEngine.GraphicsBuffer;
 
 public class BarrackTower : Tower
 {
+
     [SerializeField] private Knight knightPrefabs;
     [SerializeField] private float moveSpeed;
+    [SerializeField] Sprite[] spriteKnight;
     private ObjectPool<Knight> knightPool;
     private float timer = 0;
     protected override void Start()
@@ -20,13 +22,21 @@ public class BarrackTower : Tower
         if(timer < 0)
         {
             PerformAction();
-            timer = towerData.towerLevelDatas[currentLevel + 1].attackCooldown;
+            timer = towerData.towerLevelDatas[currentLevel - 1].attackCooldown;
         }
     }
     public override void PerformAction()
     {
         Knight knight = knightPool.GetObject();
-        knight.Initial(knightPool, moveSpeed, towerData.towerLevelDatas[currentLevel].damage);
+        knight.Initial(knightPool, moveSpeed, towerData.towerLevelDatas[currentLevel - 1].damage, spriteKnight[currentLevel - 1]);
 
+    }
+    protected override void FindEnemy()
+    {
+        
+    }
+    public override bool UpdateTower()
+    {
+        return base.UpdateTower();
     }
 }

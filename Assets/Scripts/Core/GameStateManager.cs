@@ -18,7 +18,6 @@ public class GameStateManager : Singleton<GameStateManager>
     public void SetState(GameState state)
     {
         currentState = state;
-        Debug.Log(state.ToString());
         EventManager.Instance.Broadcast(EventID.OnGameStateChanged, currentState);
     }
 }

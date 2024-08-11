@@ -25,12 +25,14 @@ public class GameOverUI : MonoBehaviour
                 titleText.text = "Victory!";
                 titleImage.color = victoryColor;
                 homeBtn.GetComponent<Image>().color = victoryColor;
-                homeBtn.onClick.AddListener(() => StaticSceneManager.LoadScene("MenuScene"));
+                homeBtn.onClick.AddListener(() => StaticSceneManager.LoadScene(GameConstants.MENU_SCENE));
 
                 alterBtn.GetComponent<Image>().color = victoryColor;
+                alterBtn.onClick.AddListener(StaticSceneManager.LoadCurrentScene);
+                alterBtn.GetComponentInChildren<TextMeshProUGUI>().text = "Again";
+                // alterBtn.onClick.AddListener(StaticSceneManager.LoadScene(GameConstants))
 
-
-                alterBtn.GetComponentInChildren<TextMeshProUGUI>().text = "Next";
+                //alterBtn.GetComponentInChildren<TextMeshProUGUI>().text = "Next";
                 gameObject.SetActive(true);
                 break;
             case GameState.Defeat:
@@ -38,7 +40,7 @@ public class GameOverUI : MonoBehaviour
                 titleText.text = "Defeat!";
                 titleImage.color = defeatColor;
                 homeBtn.GetComponent<Image>().color = defeatColor;
-                homeBtn.onClick.AddListener(() => StaticSceneManager.LoadScene("MenuScene"));
+                homeBtn.onClick.AddListener(() => StaticSceneManager.LoadScene(GameConstants.MENU_SCENE));
 
                 alterBtn.GetComponent<Image>().color = defeatColor;
                 alterBtn.onClick.AddListener(StaticSceneManager.LoadCurrentScene);

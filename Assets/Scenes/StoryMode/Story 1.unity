@@ -214,10 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5012066535616048678, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 1457809171, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
+      propertyPath: towerButtonPrefab
+      value: 
+      objectReference: {fileID: 1432199932021912567, guid: fc22208d58e7eca4ebf2333736672486, type: 3}
     - target: {fileID: 5012066535961053365, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -514,27 +514,27 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5248963901710925344, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
+    - target: {fileID: 5248963902319387919, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5248963901710925344, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
+    - target: {fileID: 5248963902319387919, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5248963901710925344, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
+    - target: {fileID: 5248963902319387919, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5248963901710925344, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
+    - target: {fileID: 5248963902319387919, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5248963901710925344, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
+    - target: {fileID: 5248963902319387919, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5248963901710925344, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
+    - target: {fileID: 5248963902319387919, guid: c9b617f24b2023a489a7cdabd21a1d8f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -758,6 +758,10 @@ PrefabInstance:
     - target: {fileID: 5020954099115867335, guid: 42ba1f46060ea364297ea50006673c35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020954099115867336, guid: 42ba1f46060ea364297ea50006673c35, type: 3}
+      propertyPath: currentState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5020954099115867337, guid: 42ba1f46060ea364297ea50006673c35, type: 3}
       propertyPath: m_Name
@@ -1911,7 +1915,35 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 918362368}
     - target: {fileID: 4419027193759602360, guid: b7ee594fb53ba8744905f95f224768ea, type: 3}
+      propertyPath: timeBetweenWave
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419027193759602360, guid: b7ee594fb53ba8744905f95f224768ea, type: 3}
+      propertyPath: waves.Array.data[0].poolSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419027193759602360, guid: b7ee594fb53ba8744905f95f224768ea, type: 3}
+      propertyPath: waves.Array.data[1].poolSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419027193759602360, guid: b7ee594fb53ba8744905f95f224768ea, type: 3}
+      propertyPath: waves.Array.data[1].enemySpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419027193759602360, guid: b7ee594fb53ba8744905f95f224768ea, type: 3}
+      propertyPath: waves.Array.data[0].enemyHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419027193759602360, guid: b7ee594fb53ba8744905f95f224768ea, type: 3}
       propertyPath: waves.Array.data[0].enemyInWave
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419027193759602360, guid: b7ee594fb53ba8744905f95f224768ea, type: 3}
+      propertyPath: waves.Array.data[1].enemyInWave
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419027193759602360, guid: b7ee594fb53ba8744905f95f224768ea, type: 3}
+      propertyPath: waves.Array.data[0].coinsReceive
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4419027193759602361, guid: b7ee594fb53ba8744905f95f224768ea, type: 3}

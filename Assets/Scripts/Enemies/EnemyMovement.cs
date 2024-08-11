@@ -13,15 +13,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnEnable()
     {
+        EventManager.Instance.Register(EventID.OnPlaceTower, Enemy_OnTowerPlace);
         pathFinding = GameController.Instance.GetPathFinding();
         path = pathFinding.FindPath(pathFinding.startNode, pathFinding.endNode);
         if (path == null) return;
         targetIndex = 0;
         Spawn();    
-    }
-    private void Start()
-    {
-        EventManager.Instance.Register(EventID.OnPlaceTower, OnTowerPlace);
     }
     private void Update()
     {
@@ -65,11 +62,17 @@ public class EnemyMovement : MonoBehaviour
         moveSpeed = speed;
         gameObject.GetComponent<EnemyHealth>().MaxHealth = health;
     }
-    public void OnTowerPlace(object obj)
+    public void Enemy_OnTowerPlace(object obj)
     {
+        if (pathFinding is not PathFindingAStar) return;
+
         Vector3Int currentPos = GameController.Instance.GetPathFinding().roadTile.WorldToCell(transform.position);
         path = GameController.Instance.GetPathFinding().FindPath(currentPos, pathFinding.endNode);
         targetIndex = 1;
+    }
+    private void OnDisable()
+    {
+        EventManager.Instance.Unregister(EventID.OnPlaceTower, Enemy_OnTowerPlace);
     }
 
 }

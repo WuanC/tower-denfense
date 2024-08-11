@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c61c5f0da88c8409217c00a9102c94, type: 3}
   m_Name: ArcherTower
   m_EditorClassIdentifier: 
+  Id: 1
   towerName: 'Archer '
   icons: {fileID: 21300000, guid: e2b89c13e01b45a4aa7e7f0582dd55d5, type: 3}
   countLevel: 3
@@ -20,7 +21,7 @@ MonoBehaviour:
     cost: 500
     damage: 100
     range: 1
-    attackCooldown: 1
+    attackCooldown: 5
   - sprite: {fileID: 21300000, guid: cb552d78db7b47b409f39725ee5db8d7, type: 3}
     cost: 1000
     damage: 50
@@ -30,8 +31,8 @@ MonoBehaviour:
     cost: 2000
     damage: 100
     range: 3
-    attackCooldown: 2
-  towerPrefab: {fileID: 235558110204669246, guid: 8965c4e10a20fbd4e8ec4bc78fe7ff8b, type: 3}
+    attackCooldown: 0.5
+  towerPrefab: {fileID: 4029726487743494690, guid: 8965c4e10a20fbd4e8ec4bc78fe7ff8b, type: 3}
   previewTowerPrefab: {fileID: 3085413878060724537, guid: 09385e282d009a84195becccbf946e72, type: 3}
-  cout: 0
+  maxPlace: 3
   rarity: 1

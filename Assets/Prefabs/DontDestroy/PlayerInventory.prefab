@@ -45,4 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDontDestroyOnLoad: 1
+  towerSOList:
+  - {fileID: 11400000, guid: c2f40cca73412714189c766eab55b2da, type: 2}
+  - {fileID: 11400000, guid: 683c2c962cae6b445b89901a2e8e7873, type: 2}
+  - {fileID: 11400000, guid: ee8cd4b0f30806a4aa5b5176f1bcd128, type: 2}
+  - {fileID: 11400000, guid: 774e2e13ea8768c46a3dbb5d740c2e2d, type: 2}
   buttons: []
+  towerButtonPrefab: {fileID: 1432199932021912567, guid: 3f4e92745468c9d4e84b93472f0f43d5, type: 3}

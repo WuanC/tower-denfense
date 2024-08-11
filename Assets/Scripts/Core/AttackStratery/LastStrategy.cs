@@ -17,7 +17,7 @@ public class LastStrategy : IAttackStratery
             {
                 Vector3Int enemyPos = path.roadTile.WorldToCell(enemy.transform.position);
                 int enemyIndex = path.FindPath(path.startNode, path.endNode).FindIndex(p => p == enemyPos);
-                if (enemyIndex <= minPosEnemy)
+                if (enemyIndex <= minPosEnemy && enemyIndex + 1 < path.FindPath(path.startNode, path.endNode).Count)
                 {
                     Vector3Int tmpVector3Int = path.FindPath(path.startNode, path.endNode)[enemyIndex + 1];
                     float currentEnemeyDistance = Vector2.Distance(enemy.transform.position,

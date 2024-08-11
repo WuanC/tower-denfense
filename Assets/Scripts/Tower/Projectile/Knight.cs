@@ -11,6 +11,7 @@ public class Knight : MonoBehaviour
     private ObjectPool<Knight> knightPool;
     private float moveSpeed;
     private int damage;
+    [SerializeField] private SpriteRenderer knightSprite;
     private void OnEnable()
     {
         pathFinding = GameController.Instance.GetPathFinding();
@@ -22,24 +23,26 @@ public class Knight : MonoBehaviour
     }
     private void Start()
     {
-        EventManager.Instance.Register(EventID.OnPlaceTower, OnTowerPlace);
+        EventManager.Instance.Register(EventID.OnPlaceTower, Knight_OnTowerPlace);
     }
     private void GetStartPos()
     {
         Vector2 startPos = pathFinding.roadTile.GetCellCenterWorld(pathFinding.endNode);
         transform.position = startPos;
     }
-    public void OnTowerPlace(object obj)
+    public void Knight_OnTowerPlace(object obj)
     {
+        if (pathFinding is not PathFindingAStar) return;
         Vector3Int currentPos = pathFinding.roadTile.WorldToCell(transform.position);
         path = GameController.Instance.GetPathFinding().FindPath(currentPos, pathFinding.startNode);
         targetIndex = 1;
     }
-    public void Initial(ObjectPool<Knight> pool ,float moveSpeed, int damage)
+    public void Initial(ObjectPool<Knight> pool ,float moveSpeed, int damage, Sprite knightSprite)
     {
         this.knightPool = pool;
         this.moveSpeed = moveSpeed;
         this.damage = damage;
+        this.knightSprite.sprite = knightSprite;
     }
     private void Update()
     {
@@ -63,7 +66,6 @@ public class Knight : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("vc");
         if(collision.TryGetComponent<EnemyHealth>(out EnemyHealth enemy)){
             enemy.TakeDamage(damage);
             knightPool.ReturnObject(this);

@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StoryMode/Story 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/HardMode/Maze 1.unity
+    guid: e7f1a8802a923da4899b11bb9a8bc0c7
+  - enabled: 1
+    path: Assets/Scenes/StoryMode/Story 2.unity
+    guid: 53ae6a431f3602b47b8962e74bd6d299
   m_configObjects: {}

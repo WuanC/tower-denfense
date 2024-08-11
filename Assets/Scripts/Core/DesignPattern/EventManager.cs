@@ -32,10 +32,9 @@ public class EventManager : Singleton<EventManager>
         {
             listeners[id]?.Invoke(data);
         }
-    }
-    private void OnDestroy()
-    {
         
     }
+
     #endregion
 }
+

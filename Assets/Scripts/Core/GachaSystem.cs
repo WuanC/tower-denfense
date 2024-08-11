@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class GachaSystem : MonoBehaviour
 {
-    public event Action<List<TowerButton>, int> OnGachaSucess;
-    [SerializeField] private List<TowerButton> towerButtons;
+    public event Action<List<TowerSO>, int> OnGachaSucess;
+    [SerializeField] private List<TowerSO> listTowerData;
     [SerializeField] private Button buy1Btn;
     [SerializeField] private Button buy10Btn;
 
@@ -22,56 +22,56 @@ public class GachaSystem : MonoBehaviour
 
     public void RollGacha(int countOfRolls)
     {
-        if(towerButtons == null || towerButtons.Count ==0) {
+        if(listTowerData == null || listTowerData.Count ==0) {
             Debug.Log("loi danh sach towerButton");
             return;
         }
-        List<TowerButton> tmp = new List<TowerButton>();
+        List<TowerSO> tmpListTowerSO = new List<TowerSO>();
         for(int i = 0; i < countOfRolls; i++)
         {
-            TowerButton item;
+            TowerSO tmpTowerData;
             if (this.countOfRolls % MYTHIC_PITY == 0 && this.countOfRolls != 0)
             {
-                item = GetTowerButtonItemByRarity(1);
+                tmpTowerData = GetTowerButtonItemByRarity(1);
                 this.countOfRolls = 0;
             }
             else
             {
                 float randomValue = UnityEngine.Random.Range(0f, GetTotalWeight());
-                item = GetTowerButtonItem(randomValue);
+                tmpTowerData = GetTowerButtonItem(randomValue);
             }
-            tmp.Add(item);
-            PlayerInventory.Instance.AddItem(item);
+            tmpListTowerSO.Add(tmpTowerData);
+            PlayerInventory.Instance.AddItem(tmpTowerData);
             this.countOfRolls++;
         }
-        OnGachaSucess?.Invoke(tmp, this.countOfRolls);
+        OnGachaSucess?.Invoke(tmpListTowerSO, this.countOfRolls);
 
 
     }
     private int GetTotalWeight()
     {
         int totalWeight = 0;
-        foreach(TowerButton button in towerButtons)
+        foreach(TowerSO towerData in listTowerData)
         {
-            totalWeight += button.TowerSO.rarity;
+            totalWeight += towerData.rarity;
         }
         return totalWeight;
     }
-    private TowerButton GetTowerButtonItem(float randomValue)
+    private TowerSO GetTowerButtonItem(float randomValue)
     {
-        foreach(TowerButton button in towerButtons)
+        foreach(TowerSO towerData in listTowerData)
         {
-            if(randomValue < button.TowerSO.rarity)
+            if(randomValue < towerData.rarity)
             {
-                return button;
+                return towerData;
             }
-            randomValue -= button.TowerSO.rarity;
+            randomValue -= towerData.rarity;
         }
         return null;
     }
-    private TowerButton GetTowerButtonItemByRarity(float rarity)
+    private TowerSO GetTowerButtonItemByRarity(float rarity)
     {
-        return towerButtons.FirstOrDefault(t => t.TowerSO.rarity == rarity);
+        return listTowerData.FirstOrDefault(t => t.rarity == rarity);
     }
     public void OnDestroy()
     {

@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5906402b2b53b468b00219c08078de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knightSprite: {fileID: 3053960301582032917}
 --- !u!70 &6528285814465355470
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -560,7 +560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44601378a8e2c5647a53f36ced45d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
   enemyCoin: 10
 --- !u!114 &1968180672717744859
 MonoBehaviour:
@@ -586,7 +585,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.08}

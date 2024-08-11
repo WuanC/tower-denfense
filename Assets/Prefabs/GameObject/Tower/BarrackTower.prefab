@@ -1926,8 +1926,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 373770345778488174}
-  - component: {fileID: 1605412420630254376}
   - component: {fileID: 8282174589751373841}
+  - component: {fileID: 1605412420630254376}
   - component: {fileID: 158640364659272527}
   m_Layer: 3
   m_Name: BarrackTower
@@ -1954,24 +1954,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1605412420630254376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7100835351585617292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6550777e5d495ef4ca45ae84485e2bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 5879574646624758855}
-  towerData: {fileID: 11400000, guid: 683c2c962cae6b445b89901a2e8e7873, type: 2}
-  skillRangeIndicator: {fileID: 3636907719610722080}
-  informationUI: {fileID: 1376106302994377171}
-  knightPrefabs: {fileID: 8619966782955134266, guid: 1bd4aa715f0ecd941a3199a8959d3940, type: 3}
-  moveSpeed: 0.5
 --- !u!114 &8282174589751373841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1998,6 +1980,28 @@ MonoBehaviour:
   saleBtn: {fileID: 103141790194955318}
   upgradeBtnText: {fileID: 1810493537094996795}
   strategyText: {fileID: 4455812231200097422}
+--- !u!114 &1605412420630254376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7100835351585617292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6550777e5d495ef4ca45ae84485e2bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 5879574646624758855}
+  towerData: {fileID: 11400000, guid: 683c2c962cae6b445b89901a2e8e7873, type: 2}
+  skillRangeIndicator: {fileID: 3636907719610722080}
+  informationUI: {fileID: 1376106302994377171}
+  knightPrefabs: {fileID: 8619966782955134266, guid: 1bd4aa715f0ecd941a3199a8959d3940, type: 3}
+  moveSpeed: 0.5
+  spriteKnight:
+  - {fileID: 21300000, guid: d0cbeea32ac53284b955564b0fb2d4bd, type: 3}
+  - {fileID: 21300000, guid: 8481489bb6e8f2b48a4aae9cfd0e8f94, type: 3}
+  - {fileID: 21300000, guid: 14861a66ad46888468cf7fe21d4882e8, type: 3}
 --- !u!61 &158640364659272527
 BoxCollider2D:
   m_ObjectHideFlags: 0

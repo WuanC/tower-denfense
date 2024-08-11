@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c61c5f0da88c8409217c00a9102c94, type: 3}
+  m_Name: WizardTower
+  m_EditorClassIdentifier: 
+  Id: 4
+  towerName: Wizard
+  icons: {fileID: 21300000, guid: 93f61c3c048235c44a63668566f96336, type: 3}
+  countLevel: 3
+  towerLevelDatas:
+  - sprite: {fileID: 21300000, guid: 93f61c3c048235c44a63668566f96336, type: 3}
+    cost: 200
+    damage: 200
+    range: 3
+    attackCooldown: 1
+  - sprite: {fileID: 21300000, guid: d05448a04217bee42b91c3cbddd13dc0, type: 3}
+    cost: 200
+    damage: 200
+    range: 3
+    attackCooldown: 1
+  - sprite: {fileID: 21300000, guid: 796bdead3774b744fa82cee866706b4f, type: 3}
+    cost: 200
+    damage: 200
+    range: 3
+    attackCooldown: 1
+  towerPrefab: {fileID: 4029726487743494690, guid: acf4d303f75d03d4e8b58062e62ba3df, type: 3}
+  previewTowerPrefab: {fileID: 3085413878060724537, guid: 21728a02ab160294caa3e74fa49cd3d3, type: 3}
+  maxPlace: 2
+  rarity: 39

@@ -20,7 +20,6 @@ public class PathFinding : MonoBehaviour
     {
         switch (modeType)
         {
-
             case PathfindingType.Automatic:
                 currentNode = new Node(startNode);
                 currentNode.parentNode = null;
@@ -32,13 +31,13 @@ public class PathFinding : MonoBehaviour
                     {
                         if (IsWalking(newNode.posittion) && (currentNode.parentNode == null || !newNode.CompareTo(currentNode.parentNode)))
                         {
-   
                             path.Add(newNode.posittion);
                             newNode.parentNode = currentNode;
                             currentNode = newNode;
                             break;
                         }
                     }
+
 
                 }
                 return path;
@@ -60,7 +59,16 @@ public class PathFinding : MonoBehaviour
             new Node(new Vector3Int(posittion.x, posittion.y + 1, posittion.z)),
             new Node(new Vector3Int(posittion.x, posittion.y - 1, posittion.z))
         };
-        return result;  
+        List<Node> randomResult = new List<Node>();
+        while (result.Count > 0)
+        {
+            int randomIndex = Random.Range(0, result.Count);
+            randomResult.Add(result[randomIndex]);
+            result.RemoveAt(randomIndex);
+        }
+
+
+        return randomResult;  
     }
     protected bool IsWalking(Vector3Int posittion)
     {
@@ -77,6 +85,10 @@ public class PathFinding : MonoBehaviour
     public void RemoveObstacle(Vector3Int posittion)
     {
         obstacles.Remove(posittion);
+    }
+    public Vector3Int GetCellInMap(Vector3 posstion)
+    {
+        return roadTile.WorldToCell(posstion);
     }
 
 }

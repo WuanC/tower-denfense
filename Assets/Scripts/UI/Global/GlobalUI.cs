@@ -74,6 +74,7 @@ public class GlobalUI : Singleton<GlobalUI>
                     unitPanel.SetActive(false);
                     listUtilitiBtn.SetActive(true);
                     gameObject.SetActive(false);
+                    Debug.Log("a");
                     break;
                 case GameState.SelectMode:
                 case GameState.Selection:

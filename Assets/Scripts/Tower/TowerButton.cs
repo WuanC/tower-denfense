@@ -10,6 +10,10 @@ public class TowerButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI costText;
 
     Button button;
+    public void SetTowerData(TowerSO data)
+    {
+        towerSO = data;
+    }
 
     private void Awake()
     {

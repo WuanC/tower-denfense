@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public  class Tower : MonoBehaviour
+public abstract class Tower : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     [SerializeField] protected TowerSO towerData;
     [SerializeField] protected GameObject skillRangeIndicator;
     [SerializeField] protected GameObject informationUI;
 
-    protected int currentLevel;
-    protected bool canAttack;
+     protected int currentLevel;
+    protected static int currentCount;
 
     protected IAttackStratery attackStrategy;
     protected List<StrategyType> listStrategyType;
@@ -22,13 +22,14 @@ public  class Tower : MonoBehaviour
     public event Action OnUpgrapeTower;
     public event Action<StrategyType> OnChangeStrategy;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         currentLevel = 1;
+        OnUpgrapeTower?.Invoke();
     }
     protected virtual void Start()
     {
-        canAttack = true;
+        currentCount++;
         float scale = towerData.towerLevelDatas[currentLevel - 1].range * 2;
         skillRangeIndicator.transform.localScale = new Vector3(scale, scale, scale);
         SetActiveStatus(false);
@@ -43,14 +44,6 @@ public  class Tower : MonoBehaviour
         };
     }
 
-    private void Update()
-    {
-        FindEnemy();
-        if (canAttack)
-        {
-            
-        }
-    }
     public void ChangeStrategy()
     {
         int index = listStrategyType.IndexOf(currentStrategyType);
@@ -82,30 +75,25 @@ public  class Tower : MonoBehaviour
                 break;
         }
     }
-    protected virtual void FindEnemy()
-    {
-   
-    }
-    public virtual void PerformAction()
-    {
-
-    }
+    protected abstract void FindEnemy();
+    public abstract void PerformAction();
     public virtual void SetActiveStatus(bool value)
     {
         skillRangeIndicator.SetActive(value);
         informationUI.SetActive(value);
     }
-    public void UpdateTower()
+    public virtual bool UpdateTower()
     {
-        if (currentLevel >= towerData.countLevel) return;
+        if (currentLevel >= towerData.countLevel) return false;
         int costUpgrape = towerData.towerLevelDatas[currentLevel].cost;
-        if (costUpgrape > GameController.Instance.GetCurretCoins()) return;
+        if (costUpgrape > GameController.Instance.GetCurretCoins()) return false;
         EventManager.Instance.Broadcast(EventID.OnWithDrawCoins, costUpgrape);
         currentLevel++;
         spriteRenderer.sprite = towerData.towerLevelDatas[currentLevel - 1].sprite;
         float scale = towerData.towerLevelDatas[currentLevel - 1].range * 2;
         skillRangeIndicator.transform.localScale = new Vector3(scale, scale, scale);
         OnUpgrapeTower?.Invoke();
+        return true;
     }
     public int GetStartCoins()
     {
@@ -114,10 +102,19 @@ public  class Tower : MonoBehaviour
     public void SaleTower()
     {
         gameObject.SetActive(false);
+        EventManager.Instance.Broadcast(EventID.OnDepositeCoins, towerData.towerLevelDatas[currentLevel - 1].cost);
         Destroy(gameObject);
     }
     public int GetCurrentLevel()
     {
         return currentLevel;
+    }
+    public bool CountPlaceValid()
+    {
+        return currentCount < towerData.maxPlace;
+    }
+    protected virtual void OnDestroy()
+    {
+        currentCount--;
     }
 }

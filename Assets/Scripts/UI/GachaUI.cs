@@ -16,7 +16,7 @@ public class GachaUI : MonoBehaviour
 
     [SerializeField] private Image legendaryPityImage;
     [SerializeField] private TextMeshProUGUI legendaryPityText;
-    private List<TowerButton> towerShow;
+    private List<TowerSO> towerShow;
     private int currentIndex = 0;
     private void Start()
     {
@@ -30,14 +30,14 @@ public class GachaUI : MonoBehaviour
     {
         if(currentIndex < towerShow.Count)
         {
-            gachaImage.sprite = towerShow[currentIndex].TowerSO.icons;
-            gachaName.text = towerShow[currentIndex].TowerSO.name;
+            gachaImage.sprite = towerShow[currentIndex].icons;
+            gachaName.text = towerShow[currentIndex].name;
             gachaResultUI.gameObject.SetActive(true);
             currentIndex++;
         }
     }
 
-    private void GachaSystem_OnGachaSucess(List<TowerButton> obj, int countOfRoll)
+    private void GachaSystem_OnGachaSucess(List<TowerSO> obj, int countOfRoll)
     {
         towerShow = obj;
         currentIndex = 0;

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using TMPro;
@@ -43,7 +43,7 @@ public class StatusUI : MonoBehaviour
     private void Awake()
     {
         tower = GetComponent<Tower>();
-        upgradeBtn.onClick.AddListener(tower.UpdateTower);
+        upgradeBtn.onClick.AddListener(OnUpgradeButtonClick);
         saleBtn.onClick.AddListener(tower.SaleTower);
         strategyBtn.onClick.AddListener(tower.ChangeStrategy);
 
@@ -72,10 +72,6 @@ public class StatusUI : MonoBehaviour
                 break;
         }
     }
-    private void OnEnable()
-    {
-        UpdateStatus();
-    }
     private void OnDestroy()
     {
         upgradeBtn.onClick.RemoveAllListeners();
@@ -84,17 +80,20 @@ public class StatusUI : MonoBehaviour
         tower.OnUpgrapeTower -= UpdateStatus;
         tower.OnChangeStrategy -= Tower_OnChangeStrategy;
     }
+    void OnUpgradeButtonClick()
+    {
+        bool result = tower.UpdateTower();
+    }
     void UpdateStatus()
     {
         currentLevel = tower.GetCurrentLevel();
         textName.text = towerData.towerName;
         textCurrentLevel.text = "Level [" + currentLevel.ToString() + "]";
-
         textCurrentDamage.text = towerData.towerLevelDatas[currentLevel - 1].damage.ToString();
         textCurrentCooldown.text = towerData.towerLevelDatas[currentLevel - 1].attackCooldown.ToString();
         textCurrentRange.text = towerData.towerLevelDatas[currentLevel - 1].range.ToString();
 
-        if(currentLevel == towerData.countLevel)
+        if (currentLevel == towerData.countLevel)
         {
             textNextDamage.text = MAX_LEVEL;
             textNextCooldown.text = MAX_LEVEL;
