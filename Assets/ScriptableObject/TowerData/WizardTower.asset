@@ -18,18 +18,18 @@ MonoBehaviour:
   countLevel: 3
   towerLevelDatas:
   - sprite: {fileID: 21300000, guid: 93f61c3c048235c44a63668566f96336, type: 3}
-    cost: 200
-    damage: 200
+    cost: 400
+    damage: 45
     range: 3
     attackCooldown: 1
   - sprite: {fileID: 21300000, guid: d05448a04217bee42b91c3cbddd13dc0, type: 3}
     cost: 200
-    damage: 200
+    damage: 75
     range: 3
     attackCooldown: 1
   - sprite: {fileID: 21300000, guid: 796bdead3774b744fa82cee866706b4f, type: 3}
     cost: 200
-    damage: 200
+    damage: 150
     range: 3
     attackCooldown: 1
   towerPrefab: {fileID: 4029726487743494690, guid: acf4d303f75d03d4e8b58062e62ba3df, type: 3}

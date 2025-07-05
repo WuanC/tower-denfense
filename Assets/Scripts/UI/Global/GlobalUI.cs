@@ -24,6 +24,9 @@ public class GlobalUI : Singleton<GlobalUI>
                     null;
             }
         }
+        unitPanel.SetActive(false);
+        gameObject.SetActive(false);
+        Test();
     }
     
     private void OnDestroy()
@@ -91,4 +94,25 @@ public class GlobalUI : Singleton<GlobalUI>
             }
         }
     }
+    void Test()
+    {
+        B b = new B();
+        b.a = new A();
+        b.a.a = 1;
+        B c = new B();
+        c = b;
+        Debug.Log(c.a.a);
+        Debug.Log("==");// 1
+        c.a.a = 2;
+        Debug.Log(b.a.a);
+    }
 }
+public class A
+{
+    public int a;
+}
+public struct B
+{
+    public A a;
+}
+

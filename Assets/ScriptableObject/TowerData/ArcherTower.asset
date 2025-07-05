@@ -19,7 +19,7 @@ MonoBehaviour:
   towerLevelDatas:
   - sprite: {fileID: 21300000, guid: e2b89c13e01b45a4aa7e7f0582dd55d5, type: 3}
     cost: 500
-    damage: 100
+    damage: 50
     range: 1
     attackCooldown: 5
   - sprite: {fileID: 21300000, guid: cb552d78db7b47b409f39725ee5db8d7, type: 3}

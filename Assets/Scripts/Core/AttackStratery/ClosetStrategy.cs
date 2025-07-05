@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UIElements;
-
-public class ClosetStrategy : IAttackStratery
+ class ClosetStrategy : IAttackStratery
 {
+    
     public EnemyHealth FindTargetEnemy(Vector3 myPosittion, float range, PathFinding path)
     {
         float minDistance = Mathf.Infinity;
@@ -16,7 +17,7 @@ public class ClosetStrategy : IAttackStratery
             {
                 float distance = Vector2.Distance(myPosittion, collider2d.transform.position);
                 if (distance < minDistance)
-                {
+                {     
                     minDistance = distance;
                     targetEnemy = enemy;
                 }
@@ -25,3 +26,5 @@ public class ClosetStrategy : IAttackStratery
         return targetEnemy;
     }
 }
+
+
